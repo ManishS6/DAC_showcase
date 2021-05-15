@@ -1,0 +1,6 @@
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX dbp: <http://dbpedia.org/property/>
+SELECT DISTINCT ?date
+WHERE {
+    res:Finland dbp:accessioneudate ?date 
+    }
