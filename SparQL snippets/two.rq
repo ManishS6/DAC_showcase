@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?author_name ?title ?pages
+
+FROM <http://dbpedia.org/ontology>
+
+WHERE {
+  ?author rdf:type dbo:Writer .
+  ?author rdfs:label ?author_name .
+  ?author dbo:notableWork ?work .
+  ?work dbo:numberOfPages ?pages .
+  FILTER (?pages > 1000)
+  ?work rdfs:label ?title
+}
+
+
+LIMIT 100
