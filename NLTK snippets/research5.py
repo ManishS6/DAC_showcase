@@ -14,7 +14,8 @@ def process_content():
         for i in tokenized:
             words = nltk.word_tokenize(i)
             tagged = nltk.pos_tag(words)
-            chunkedGram = r"""Chunk: {<RB.?>*<VB.?>*<NNP>+<NN>?} """            
+            chunkedGram = r"""Chunk: {<.*>+}
+                                    }<VB.?|IN|DT>+{ """           
 
             chunkParser = nltk.RegexpParser(chunkedGram)
             chunked = chunkParser.parse(tagged)
