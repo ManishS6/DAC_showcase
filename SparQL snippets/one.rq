@@ -1,0 +1,19 @@
+PREFIX : <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?author_name ?title
+
+FROM <http://dbpedia.org/>
+
+WHERE {
+  ?author rdf:type dbo:Writer .
+  ?author rdfs:label ?author_name .
+  ?author dbo:notableWork ?work .
+  ?work rdfs:label ?title.
+}
+
+ORDER BY DESC (?author_name)
+LIMIT 100
+OFFSET 10
