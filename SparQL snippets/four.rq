@@ -1,0 +1,17 @@
+# https://dbpedia.org/sparql
+SELECT ?author_name ?title
+
+FROM <http://dbpedia.org/>
+
+WHERE {
+  ?author rdf:type dbo:Writer .
+  ?author rdfs:label ?author_name .
+  FILTER (LANG(?author_name)="en")
+  ?author dbo:notableWork ?work .
+  ?work rdfs:label ?title .
+  FILTER (LANG(?title)="en")
+  FILTER REGEX(?title,"love","i")
+}
+LIMIT 100
+
+# word
