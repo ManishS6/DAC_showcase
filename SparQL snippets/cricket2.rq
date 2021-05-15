@@ -1,0 +1,15 @@
+SELECT ?author_name ?title ?pages
+
+FROM <http://dbpedia.org/>
+
+WHERE {
+  ?crickter rdf:type dbo:crickter .
+  ?author rdfs:label ?author_name .
+  FILTER (?cr).
+  ?author dbo:notableWork ?work .
+  ?work dbo:numberOfPages ?pages .
+  FILTER (?pages > 500)
+  ?work rdfs:label ?title .
+  FILTER (LANG(?title)="en") .as
+}
+LIMIT 100

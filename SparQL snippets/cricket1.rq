@@ -1,0 +1,18 @@
+PREFIX : <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?player_name ?budday
+
+FROM <http://dbpedia.org/>
+
+WHERE {
+  ?player rdf:type dbo:Cricketer .
+  ?player rdfs:label ?player_name .
+  ?player dbo:birthDate ?budday .
+}
+
+ORDER BY ASC (?player_name)
+LIMIT 100
+OFFSET 10
